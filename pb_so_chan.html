@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập các số nguyên, cách nhau bằng dấu phẩy <input type="array" id="arr"><br>
+    <input type="button" onclick="kq()" value="Kết quả">
+    <span id="result"></span>
+    <script>
+        function kq() {
+            let input = document.getElementById('arr').value;
+            let arr = input.split(",");
+            let kq = [arr[0]]
+            for (var i=1;i<=arr.length;i++){
+                if (arr[(i-1)]%2==0&&arr[i]%2==0){
+                    kq.push('-',arr[i])
+                }
+                else {
+                    kq.push(arr[i]);
+                }
+            }
+            console.log(kq.join(''));
+            document.getElementById('result').innerHTML=kq.join('');
+        }
+
+    </script>
+</body>
+
+</html>

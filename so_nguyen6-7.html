@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập các số nguyên, cách nhau bằng dấu phẩy <input type="array" id="arr"><br>
+    Nhập số cần kiểm tra <input type="number" id="num"><br>
+    <input type="button" onclick="kq()" value="Kết quả"><br>
+    <span id="result"></span>
+    <script>
+        function kq() {
+            // đưa các giá trị từ input vào mảng, cắt giá trị khoảng trắng
+            let input = document.getElementById('arr').value.trim();
+            if (input.endsWith(',')) {
+                input = input.slice(0, -1); // Loại bỏ dấu phẩy cuối cùng
+            }
+            let arr = input.split(",").filter(val => !isNaN(val)); // tách chuỗi và lọc giá trị là số
+            let kq = document.getElementById('result')
+            // Chuyển dữ liệu của mảng từ string về number
+            for (let i = 0; i < arr.length; i++) {
+                arr[i] = parseFloat(arr[i]);
+            }
+
+            let num=Number(document.getElementById('num').value);
+            let flag = false;
+            for (var a = 0; a<arr.length; a++){
+                if (arr[a] == num){
+                    flag = true;
+                    arr.splice(a,1);
+                    a--;
+                }
+            }
+            console.log(arr);
+            if (flag){
+                kq.innerHTML=`Number ${num} is in the array
+                <br> Dãy số mới là ${arr}`;
+            }
+            else {
+                kq.innerHTML=`Number ${num} is not in the array
+                <br> Dãy số không thay đổi`;
+
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>

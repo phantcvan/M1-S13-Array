@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập văn bản cần chuyển đổi <input type="text" id="arr">
+    <input type="button" onclick="kq()" value="Kết quả">
+    <span id="result"></span>
+    <script>
+        // function kq() {
+        //     let input = document.getElementById('arr').value;
+        //     let kq=[];
+        //     for (var i=0;i<input.length;i++){
+        //         if (input[i]>='a'){
+        //             kq.push(input[i].toUpperCase());
+        //         }
+        //         else {
+        //             kq.push(input[i].toLowerCase());
+        //         }
+        //     }
+        //     console.log(kq.join(''));
+        // }
+
+        // Cách 2
+        function kq() {
+            let input = document.getElementById('arr').value;
+            let kq = [];
+            let up = 'QWERTYUIOPASDFGHJKLZXCVBNM'
+            let down = 'qwertyuiopasdfghjklzxcvbnm'
+            for (var i = 0; i < input.length; i++) {
+                if (up.indexOf(input[i]) !== -1) {
+                    kq.push(input[i].toLowerCase());
+                }
+                else {
+                    kq.push(input[i].toUpperCase());
+                }
+            }
+            // console.log(kq.join(''));
+            for (var i=1;i<kq.length;i++){
+                if (kq[i-1]=='&nbsp;'){
+                    kq.push(input[i].toUpperCase());
+                }
+            }
+            console.log(kq.join(''));
+
+        }
+
+    </script>
+
+</body>
+
+</html>

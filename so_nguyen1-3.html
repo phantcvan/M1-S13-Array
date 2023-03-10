@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập các số nguyên, cách nhau bằng dấu phẩy <input type="array" id="arr"><br>
+    <input type="button" onclick="kq()" value="Kết quả">
+    <span id="result"></span>
+    <script>
+        function kq() {
+            // đưa các giá trị từ input vào mảng, cắt giá trị khoảng trắng
+            let input = document.getElementById('arr').value.trim();
+            if (input.endsWith(',')) {
+                input = input.slice(0, -1); // Loại bỏ dấu phẩy cuối cùng
+            }
+            let arr = input.split(",").filter(val => !isNaN(val)); // tách chuỗi và lọc giá trị là số
+            console.log(arr);
+            let result = document.getElementById('result');
+            let sum = 0;
+
+            // Chuyển dữ liệu của mảng từ string về number, tính giá trị TB
+            for (let i = 0; i < arr.length; i++) {
+                arr[i] = parseFloat(arr[i]);
+                sum += arr[i];
+            }
+
+            let average = (sum / arr.length).toFixed(3);
+            // Tìm các số lớn hơn 10
+            let kq = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] >= 10) {
+                    kq++;
+                }
+            }
+            console.log("kq",kq);
+
+            let hon10 = "";
+            if (kq === 0) {
+                hon10 = "Không có số nào lớn hơn hoặc bằng 10";
+            } else {
+                hon10 = "Các số lớn hơn hoặc bằng 10 là: ";
+                for (let i = 0; i <= arr.length; i++) {
+                    if (arr[i] >= 10) {
+                        hon10 += arr[i] + " ";
+                    }
+                }
+            }
+
+            // tìm số max
+            let max = arr[0];
+            for (var b = 1; b <= arr.length; b++) {
+                if (arr[b] > max) {
+                    max = arr[b];
+                }
+            }
+            let count = 0;
+            var positions = [];
+            // count đếm số lần max xuất hiện
+            // position xác định vị trí của max
+            for (var c = 0; c < arr.length; c++) {
+                if (arr[c] == max) {
+                    count++;
+                    positions.push(c);
+                }
+            }
+
+            for (var i = 0; i < positions.length; i++) {
+                positions[i] += 1;
+            }
+
+            // hiển thị kết quả
+            if (count == arr.length) {
+                result.innerHTML = `${hon10} 
+            <br> Các số có giá trị bằng nhau
+            <br> Giá trị trung bình của chúng là ${average}`;
+
+            }
+            else if (count == 1) {
+                result.innerHTML = `${hon10} 
+            <br> Số lớn nhất là ${max}  <br> Số đó ở vị trí thứ ${positions}
+            <br> Giá trị trung bình của chúng là ${average}`;
+            }
+            else {
+                result.innerHTML = `${hon10} 
+            <br> Số lớn nhất là ${max}
+            <br> Có ${count} số có giá trị bằng nhau và lớn nhất
+            <br> Số đó ở vị trí thứ ${positions}
+            <br> Giá trị trung bình của chúng là ${average}`;
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

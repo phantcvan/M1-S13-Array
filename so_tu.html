@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập văn bản <input type="text" id="arr">
+    <input type="button" onclick="kq()" value="Kết quả">
+    <span id="result"></span>
+    <script>
+        function kq() {
+            let input = document.getElementById('arr').value.trim();
+            // loại bỏ nhiều dấu cách
+            let trim = input.replace(/\s+/g, " ");
+            console.log(trim);
+            let words = trim.split(" "); // tách chuỗi thành các từ
+            let count = words.length; // đếm số lượng từ
+            document.getElementById('result').innerHTML = `Có ${count} từ trong dãy`;
+
+        }
+    </script>
+
+</body>
+
+</html>

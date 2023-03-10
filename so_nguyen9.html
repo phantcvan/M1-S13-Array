@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập dãy số thứ nhất, cách nhau bằng dấu phẩy <input type="array" id="arr1"><br>
+    Nhập dãy số thứ hai, cách nhau bằng dấu phẩy <input type="array" id="arr2"><br>
+    <input type="button" onclick="kq()" value="Kết quả"><br>
+    <span id="result"></span>
+    <script>
+        function kq() {
+            // đưa các giá trị từ input vào mảng, cắt giá trị khoảng trắng
+            let input1 = document.getElementById('arr1').value.trim();
+            if (input1.endsWith(',')) {
+                input1 = input1.slice(0, -1); // Loại bỏ dấu phẩy cuối cùng
+            }
+            let arr1 = input1.split(",").filter(val => !isNaN(val)); // tách chuỗi và lọc giá trị là số
+
+            let input2 = document.getElementById('arr2').value.trim();
+            if (input2.endsWith(',')) {
+                input2 = input2.slice(0, -1); // Loại bỏ dấu phẩy cuối cùng
+            }
+            let arr2 = input2.split(",").filter(val => !isNaN(val)); // tách chuỗi và lọc giá trị là số
+
+            let kq = document.getElementById('result')
+            // Chuyển dữ liệu của mảng từ string về number
+            for (let i = 0; i < arr1.length; i++) {
+                arr1[i] = parseFloat(arr1[i]);
+            }
+            for (let a = 0; a < arr2.length; a++) {
+                arr2[a] = parseFloat(arr2[a]);
+            }
+            // Gộp 2 mảng
+            let newArray=[...arr1,...arr2]
+            kq.innerHTML=`Dãy số mới là: ${newArray}`;
+
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="love()">
+    <h2>Type anything slowly</h2>
+    <textarea id="input" cols="50" rows="5" oninput="love()"></textarea>
+
+    <script>
+        function love() {
+            let input = document.getElementById("input").value;
+            let love ='I LOVE YOU!!!';
+            console.log(love.length);
+            let output="";
+            for (i=0;i<input.length;i++){
+                output+=love[i];
+                if (i>(love.length-1)) {
+                    output="";
+                    // break;
+                }
+            }
+            document.getElementById("input").value=output;
+            output="";
+        }
+    </script>
+</body>
+
+</html>

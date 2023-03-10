@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập từ <input type="text" id="input"><br>
+    <!-- Nhập tiếng anh <input type="text" id="English"><br> -->
+
+    <input type="button" onclick="dic()" value="Translate">
+    <!-- <input type="button" onclick="eng()" value="Chuyển sang tiếng Việt"><br> -->
+    <span id="result"></span>
+
+    <script>
+
+        function dic() {
+            let dictionary = [
+                ["hello", "xin chao"],
+                ["world", "thế giới"],
+                ["computer", "máy tính"],
+                ["book", "sách"],
+                ["music", "âm nhạc"],
+                ["dog", "con chó"]
+            ];
+            let word = document.getElementById("input").value.trim();
+            for (let i = 0; i < dictionary.length; i++) {
+                if (dictionary[i][1] == word) {
+                    document.getElementById("result").innerHTML = dictionary[i][0];
+                    return dictionary[i];
+                }
+                else if (dictionary[i][0] == word) {
+                    document.getElementById("result").innerHTML = dictionary[i][1];
+                    return dictionary[i];
+                }
+            }
+            document.getElementById("result").innerHTML = "Không tìm thấy từ trong từ điển";
+            // return undefined;
+        }
+
+    </script>
+</body>
+
+</html>

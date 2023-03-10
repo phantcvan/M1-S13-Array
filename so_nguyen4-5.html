@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập các số nguyên, cách nhau bằng dấu phẩy <input type="array" id="arr"><br>
+    <input type="button" onclick="kq()" value="Kết quả">
+    <span id="result"></span>
+    <script>
+        function kq() {
+            // đưa các giá trị từ input vào mảng, cắt giá trị khoảng trắng
+            let input = document.getElementById('arr').value.trim();
+            if (input.endsWith(',')) {
+                input = input.slice(0, -1); // Loại bỏ dấu phẩy cuối cùng
+            }
+            let arr = input.split(",").filter(val => !isNaN(val)); // tách chuỗi và lọc giá trị là số
+            let kq = document.getElementById('result')
+            // Chuyển dữ liệu của mảng từ string về number, tính giá trị TB
+            for (let i = 0; i < arr.length; i++) {
+                arr[i] = parseFloat(arr[i]);
+            }
+
+            console.log(arr);
+
+            // Đếm số nguyên âm của chuỗi
+            let negativeNumbers = arr.filter(num => num < 0 && Number.isInteger(num));
+            let count = negativeNumbers.length;
+            console.log(negativeNumbers);
+            console.log(count);
+
+            // đảo ngược mảng
+            for (let i = 0; i < arr.length; i++) {
+            }
+            arr.reverse();
+            console.log(arr);
+        }
+
+
+    </script>
+</body>
+
+</html>

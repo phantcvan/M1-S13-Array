@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập văn bản 1 <input type="text" id="arr1">
+    Nhập văn bản 2 <input type="text" id="arr2">
+    <input type="button" onclick="kq()" value="Kết quả">
+    <span id="result"></span>
+    <script>
+        function kq() {
+            let input1 = document.getElementById('arr1').value;
+            let input2 = document.getElementById('arr2').value;
+            console.log(input1+","+input2);
+            if (input1===input2){
+            document.getElementById('result').innerHTML=`Hai chuỗi giống nhau`
+        }
+        else {
+            document.getElementById('result').innerHTML=`Hai chuỗi khác nhau`
+        }
+            
+        }
+
+    </script>
+</body>
+
+</html>

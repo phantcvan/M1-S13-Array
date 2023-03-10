@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập từ <input type="text" id="input"><br>
+    <input type="button" onclick="dic()" value="Translate">
+    <span id="result"></span>
+
+    <script>
+        function dic() {
+            let word = document.getElementById("input").value.trim();
+            // cách 1
+            // let dictionary = [
+            //     ["hello", "xin chào"],
+            //     ["computer", "máy tính"],
+            //     ["book", "sách"],
+            //     ["music", "âm nhạc"],
+            //     ["dog", "con chó"],
+            //     ["red", "màu đỏ"],
+            //     ["green","xanh"],
+            //     ["black", "màu đen"],
+            //     ["white", "màu trắng"],
+            //     ["yellow", "màu vàng"]
+            // ];
+            // for (let i = 0; i < dictionary.length; i++) {
+            //     if (dictionary[i][1] == word) {
+            //         document.getElementById("result").innerHTML = dictionary[i][0];
+            //         return dictionary[i];
+            //     }
+            //     else if (dictionary[i][0] == word) {
+            //         document.getElementById("result").innerHTML = dictionary[i][1];
+            //         return dictionary[i];
+            //     }
+            // }
+            // document.getElementById("result").innerHTML = "Không tìm thấy từ trong từ điển";
+            // // return undefined;
+
+
+
+            // cách 2
+            let tv = ["xanh", 'đỏ', 'vàng', 'đen', 'trắng'];
+            let eng = ['green', 'red', 'yellow', 'black', 'white'];
+                if (tv.indexOf(word) > -1) {
+                    document.getElementById("result").innerHTML = eng[tv.indexOf(word)];
+                }
+                else if (eng.indexOf(word) > -1) {
+                    document.getElementById("result").innerHTML = tv[eng.indexOf(word)];
+                }
+                else {
+                    document.getElementById("result").innerHTML = `Không có`;
+                }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

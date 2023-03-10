@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nhập văn bản cần chuyển đổi <input type="text" id="arr">
+    <input type="button" onclick="kq()" value="Kết quả">
+    <span id="result"></span>
+    <script>
+        function kq(){
+            let input = document.getElementById('arr').value;
+            let arr = input.split(",");
+            let first=0;
+            let last=arr.length-1;
+            console.log(last);
+            while (first<last){
+                let a=arr[first];
+                arr[first]=arr[last];
+                arr[last]=a;
+                first++;
+                last--;
+            }
+            console.log(arr.join(""));
+            
+
+        }
+    </script>
+
+</body>
+
+</html>
