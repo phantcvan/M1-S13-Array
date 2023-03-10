@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #board {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .cell {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            margin: 5px;
+            text-align: center;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .cell:hover {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="board">
+        <div class="row">
+            <div class="cell" data-x="0" data-y="0"></div>
+            <div class="cell" data-x="0" data-y="1"></div>
+            <div class="cell" data-x="0" data-y="2"></div>
+        </div>
+        <div class="row">
+            <div class="cell" data-x="1" data-y="0"></div>
+            <div class="cell" data-x="1" data-y="1"></div>
+            <div class="cell" data-x="1" data-y="2"></div>
+        </div>
+        <div class="row">
+            <div class="cell" data-x="2" data-y="0"></div>
+            <div class="cell" data-x="2" data-y="1"></div>
+            <div class="cell" data-x="2" data-y="2"></div>
+        </div>
+        <span id="result"></span>
+    </div>
+
+
+    <script>
+        // Lấy tất cả các ô
+        let cells = document.querySelectorAll(".cell");
+
+        // Khởi tạo bàn cờ
+        let board = [["-", "-", "-"],
+        ["-", "-", "-"],
+        ["-", "-", "-"]
+        ];
+
+        let count = 0;
+
+        // Gán sự kiện "click" cho tất cả các ô
+        cells.forEach(function (cell) {
+            cell.addEventListener("click", function (event) {
+                // Lấy đối tượng ô được click
+                let cell = event.target;
+
+                // Lấy vị trí hàng và cột của ô được click
+                let row = cell.getAttribute("data-x");
+                let col = cell.getAttribute("data-y");
+
+                // Đổi màu ô khi người dùng click vào
+                if (count % 2 === 0) {
+                    cell.style.backgroundColor = "green";
+                    board[row][col] = "X";
+                    cell.textContent = "X";
+                } else {
+                    cell.style.backgroundColor = "red";
+                    board[row][col] = "O";
+                    cell.textContent = "0";
+                }
+                count++;
+
+                // Kiểm tra xem người chơi X có chiến thắng hay không
+                if (checkWin("X")) {
+                    alert("Người chơi X đã chiến thắng!");
+                }
+
+                // Kiểm tra xem người chơi O có chiến thắng hay không
+                if (checkWin("O")) {
+                    alert("Người chơi O đã chiến thắng!");
+                }
+            });
+        });
+
+        // Hàm kiểm tra xem có người chiến thắng hay không
+        function checkWin(player) {
+            // Kiểm tra hàng
+            for (let row = 0; row < 3; row++) {
+                if (board[row][0] === player && board[row][1] === player && board[row][2] === player) {
+                    return true;
+                }
+            }
+
+            // Kiểm tra cột
+            for (let col = 0; col < 3; col++) {
+                if (board[0][col] === player && board[1][col] === player && board[2][col] === player||
+                board[0][0] === player && board[1][1] === player && board[2][2] === player||
+                board[0][2] === player && board[1][1] === player && board[2][0] === player
+                ) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -20,8 +20,8 @@
                 input = input.slice(0, -1); // Loại bỏ dấu phẩy cuối cùng
             }
             let arr = input.split(",").filter(val => !isNaN(val)); // tách chuỗi và lọc giá trị là số
-            let kq = document.getElementById('result')
-            // Chuyển dữ liệu của mảng từ string về number, tính giá trị TB
+            let kq = document.getElementById('result');
+            // Chuyển dữ liệu của mảng từ string về number
             for (let i = 0; i < arr.length; i++) {
                 arr[i] = parseFloat(arr[i]);
             }
